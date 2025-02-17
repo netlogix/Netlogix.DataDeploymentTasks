@@ -1,0 +1,19 @@
+{
+    "name": "netlogix/datadeploymenttasks",
+    "description": "Run tasks after syncing data into a Neos instance (eg. for staging or development environments)",
+    "type": "neos-package",
+    "version": "1.0.0",
+    "require": {
+        "neos/neos": "^8.3 || ~9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Netlogix\\DataDeploymentTasks\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Netlogix.DataDeploymentTasks"
+        }
+    }
+}
