@@ -1,0 +1,17 @@
+Netlogix:
+  DataDeploymentTasks:
+    sites:
+      # Enables or disables replacement of Domains in Neos Sites
+      enabled: false
+
+      # List of environments with a mapping to the respective live domain, see example below
+      domains: []
+
+#      domains:
+#        Staging:
+#          'live.example.org': 'staging.example.org'
+#          'some-live-domain.example': 'some-staging-domain.example'
+#
+#        Dev:
+#          'live.example.org': 'dev.example.org'
+#          'some-live-domain.example': 'some-dev-domain.localhost'

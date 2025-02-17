@@ -11,7 +11,7 @@ use RuntimeException;
 
 final class DataDeploymentCommandController extends CommandController
 {
-    protected array $taskClassNames = [Neos\AdjustRedirectDomains::class];
+    protected array $taskClassNames = [Neos\AdjustRedirectDomains::class, Neos\AdjustSiteDomains::class];
 
     public function __construct()
     {
