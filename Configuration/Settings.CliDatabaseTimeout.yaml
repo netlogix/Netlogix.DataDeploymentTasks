@@ -1,0 +1,5 @@
+Netlogix:
+  Cli:
+    IncreaseDatabaseTimeout:
+      timeouts:
+        'datadeployment:runtasks': 3600
