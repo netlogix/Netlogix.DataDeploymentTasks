@@ -9,4 +9,6 @@ interface Task
     public function isEnabled(string $destination): bool;
 
     public function run(string $destination): void;
+
+    public static function order(): int;
 }

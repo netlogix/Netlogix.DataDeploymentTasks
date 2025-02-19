@@ -5,17 +5,24 @@ declare(strict_types=1);
 namespace Netlogix\DataDeploymentTasks\Command;
 
 use Neos\Flow\Cli\CommandController;
-use Netlogix\DataDeploymentTasks\Neos;
+use Neos\Flow\ObjectManagement\ObjectManagerInterface;
+use Neos\Flow\Reflection\ReflectionService;
 use Netlogix\DataDeploymentTasks\Task;
 use RuntimeException;
+use Neos\Flow\Annotations as Flow;
 
 final class DataDeploymentCommandController extends CommandController
 {
-    protected array $taskClassNames = [Neos\AdjustRedirectDomains::class, Neos\AdjustSiteDomains::class];
+    protected array $taskClassNames = [];
 
     public function __construct()
     {
         parent::__construct();
+    }
+
+    public function initializeObject(): void
+    {
+        $this->taskClassNames = self::collectTasks($this->objectManager);
     }
 
     /**
@@ -44,8 +51,19 @@ final class DataDeploymentCommandController extends CommandController
                 continue;
             }
 
-            $this->outputLine('Running Task "%s"', [$taskClassName]);
+            $this->outputLine('<success>Running Task</success> "%s"', [$taskClassName]);
             $task->run($destination);
+            $this->outputLine();
         }
+    }
+
+    #[Flow\CompileStatic]
+    protected static function collectTasks(ObjectManagerInterface $objectManager): array
+    {
+        $reflectionService = $objectManager->get(ReflectionService::class);
+        $taskClassNames = $reflectionService->getAllImplementationClassNamesForInterface(Task::class);
+        usort($taskClassNames, static fn (string $a, string $b) => $a::order() <=> $b::order());
+
+        return $taskClassNames;
     }
 }

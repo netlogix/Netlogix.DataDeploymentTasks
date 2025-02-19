@@ -1,0 +1,6 @@
+Netlogix:
+  DataDeploymentTasks:
+    elasticsearch:
+      # Enables or disables indexing of Elasticsearch
+      # Will use the QueueIndexer command if available, otherwise the ContentRepositoryAdaptor is used
+      enabled: false
