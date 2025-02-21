@@ -77,4 +77,9 @@ UPDATE neos_redirecthandler_databasestorage_domain_model_redirect SET
 SQL
             );
     }
+
+    public static function order(): int
+    {
+        return 100;
+    }
 }

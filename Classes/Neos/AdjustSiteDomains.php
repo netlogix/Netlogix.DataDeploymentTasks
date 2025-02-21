@@ -59,4 +59,9 @@ SQL
                 );
         }
     }
+
+    public static function order(): int
+    {
+        return 100;
+    }
 }

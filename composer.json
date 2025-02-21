@@ -3,7 +3,8 @@
     "description": "Run tasks after syncing data into a Neos instance (eg. for staging or development environments)",
     "type": "neos-package",
     "require": {
-        "neos/neos": "^8.3 || ~9.0"
+        "neos/neos": "^8.3 || ~9.0",
+        "netlogix/cli-increasedatabasetimeout": "^1.1"
     },
     "autoload": {
         "psr-4": {
